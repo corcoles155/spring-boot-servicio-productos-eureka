@@ -17,7 +17,7 @@ public class ProductoController {
     @Autowired
     private IProductoService productoService;
 
-    @Value("$server.port")
+    @Value("${server.port}")
     private Integer port;
 
     @GetMapping("/productos")
