@@ -1,7 +1,7 @@
 package org.sanchez.corcoles.ana.pruebasconcepto.producto.model.service;
 
 import org.sanchez.corcoles.ana.pruebasconcepto.producto.model.dao.IProductoDao;
-import org.sanchez.corcoles.ana.pruebasconcepto.producto.model.entity.Producto;
+import org.sanchez.corcoles.ana.pruebasconcepto.commons.model.entity.Producto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

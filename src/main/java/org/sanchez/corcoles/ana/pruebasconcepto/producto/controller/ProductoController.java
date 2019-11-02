@@ -1,6 +1,6 @@
 package org.sanchez.corcoles.ana.pruebasconcepto.producto.controller;
 
-import org.sanchez.corcoles.ana.pruebasconcepto.producto.model.entity.Producto;
+import org.sanchez.corcoles.ana.pruebasconcepto.commons.model.entity.Producto;
 import org.sanchez.corcoles.ana.pruebasconcepto.producto.model.service.IProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
