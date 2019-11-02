@@ -31,6 +31,7 @@ public class ProductoController {
     public Producto ver(@PathVariable Long id) {
         final Producto producto = productoService.findById(id);
         producto.setPort(port);
+        //Para simular timeout
         /*try {
             Thread.sleep(2000L);
         } catch (InterruptedException e) {
@@ -51,12 +52,19 @@ public class ProductoController {
         productoService.deleteById(id);
     }
 
-    @PatchMapping("/productos/{id}")
+    @PutMapping("/productos/{id}")
     @ResponseStatus(HttpStatus.CREATED)
     public Producto editar(@PathVariable Long id, @RequestBody Producto producto) {
         final Producto productoAEditar = productoService.findById(id);
-        productoAEditar.setNombre(producto.getNombre());
-        productoAEditar.setPrecio(producto.getPrecio());
+        if (producto.getNombre() != null) {
+            productoAEditar.setNombre(producto.getNombre());
+        }
+        if (producto.getPrecio() != null) {
+            productoAEditar.setPrecio(producto.getPrecio());
+        }
+        if (producto.getCreateAt() != null) {
+            productoAEditar.setCreateAt(producto.getCreateAt());
+        }
         return productoService.save(productoAEditar);
     }
 }
