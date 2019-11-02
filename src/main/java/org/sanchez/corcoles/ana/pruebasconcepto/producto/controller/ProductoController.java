@@ -4,9 +4,8 @@ import org.sanchez.corcoles.ana.pruebasconcepto.producto.model.entity.Producto;
 import org.sanchez.corcoles.ana.pruebasconcepto.producto.model.service.IProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -38,5 +37,26 @@ public class ProductoController {
             e.printStackTrace();
         }*/
         return producto;
+    }
+
+    @PostMapping("/productos")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Producto crear(@RequestBody Producto producto) {
+        return productoService.save(producto);
+    }
+
+    @DeleteMapping("/productos/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void eliminar(@PathVariable Long id) {
+        productoService.deleteById(id);
+    }
+
+    @PatchMapping("/productos/{id}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Producto editar(@PathVariable Long id, @RequestBody Producto producto) {
+        final Producto productoAEditar = productoService.findById(id);
+        productoAEditar.setNombre(producto.getNombre());
+        productoAEditar.setPrecio(producto.getPrecio());
+        return productoService.save(productoAEditar);
     }
 }
