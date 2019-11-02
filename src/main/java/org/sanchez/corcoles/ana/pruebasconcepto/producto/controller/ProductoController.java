@@ -32,6 +32,11 @@ public class ProductoController {
     public Producto ver(@PathVariable Long id) {
         final Producto producto = productoService.findById(id);
         producto.setPort(port);
+        /*try {
+            Thread.sleep(2000L);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }*/
         return producto;
     }
 }
